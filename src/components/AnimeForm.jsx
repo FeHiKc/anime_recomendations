@@ -20,7 +20,7 @@ const AnimeForm = ({ onSubmitAnime }) => {
     const [selectedAnime, setSelectedAnime] = useState(null);
     const [rating, setRating] = useState(0);
     const [comment, setComment] = useState('');
-    const [showSnackbar, setShowSnackbar] = useState(false); // Для сообщения "Потужно"
+    const [showSnackbar, setShowSnackbar] = useState(false);
 
     const handleSearch = async (e) => {
         e.preventDefault();
@@ -147,26 +147,37 @@ const AnimeForm = ({ onSubmitAnime }) => {
                 />
             </Box>
 
-            <Link to="/anime-list" style={{ textDecoration: 'none' }}>
+            {/* Buttons */}
+            <Box sx={{ display: 'flex', gap: '10px', marginTop: '20px' }}>
+                <Link to="/anime-list" style={{ textDecoration: 'none', flex: 1 }}>
+                    <Button
+                        variant="outlined"
+                        color="secondary"
+                        sx={{
+                            width: '100%',
+                            borderRadius: '12px',
+                            border: '1px solid #ff4081',
+                            color: '#fff',
+                            '&:hover': { backgroundColor: '#ff4081', color: '#222' },
+                        }}
+                    >
+                        View Anime List
+                    </Button>
+                </Link>
                 <Button
-                    variant="outlined"
-                    color="secondary"
-                    sx={{ marginBottom: 2 }}
+                    onClick={handleSubmit}
+                    variant="contained"
+                    color="primary"
+                    sx={{
+                        flex: 1,
+                        borderRadius: '12px',
+                        backgroundColor: '#ff4081',
+                        '&:hover': { backgroundColor: '#ff79a5' },
+                    }}
                 >
-                    View Anime List
+                    Submit
                 </Button>
-            </Link>
-
-
-            {/* Submit Button */}
-            <Button
-                onClick={handleSubmit}
-                variant="contained"
-                color="primary"
-                sx={{ marginTop: '20px', borderRadius: '12px' }}
-            >
-                Submit
-            </Button>
+            </Box>
 
             {/* Success Snackbar */}
             <Snackbar
