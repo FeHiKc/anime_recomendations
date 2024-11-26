@@ -42,6 +42,14 @@ const AnimeListPage = () => {
         setAddedBy(anime.addedBy || '');
     };
 
+    const handleDeleteAnime = (animeId) => {
+        client.delete(`/anime/${animeId}`).then(() => {
+            setAnimeList(prevList => prevList.filter(anime => anime.id !== animeId));
+        }).catch((error) => {
+            console.error("Error deleting anime:", error);
+        });
+    };
+
     const handleSaveEdit = () => {
         const updatedList = animeList.map((item) =>
             item.id === editAnime.id
@@ -123,8 +131,16 @@ const AnimeListPage = () => {
                                         variant="outlined"
                                         color="primary"
                                         onClick={() => handleEdit(anime)}
+                                        sx={{ marginRight: 1 }}
                                     >
                                         Edit
+                                    </Button>
+                                    <Button
+                                        variant="outlined"
+                                        color="secondary"
+                                        onClick={() => handleDeleteAnime(anime.id)}
+                                    >
+                                        Delete
                                     </Button>
                                 </TableCell>
                             </TableRow>
@@ -132,8 +148,6 @@ const AnimeListPage = () => {
                     </TableBody>
                 </Table>
             </TableContainer>
-
-
 
             {/* Modal for Editing */}
             <Modal
