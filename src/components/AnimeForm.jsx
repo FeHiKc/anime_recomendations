@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
     Box,
     TextField,
@@ -145,6 +146,17 @@ const AnimeForm = ({ onSubmitAnime }) => {
                     }}
                 />
             </Box>
+
+            <Link to="/anime-list" style={{ textDecoration: 'none' }}>
+                <Button
+                    variant="outlined"
+                    color="secondary"
+                    sx={{ marginBottom: 2 }}
+                >
+                    View Anime List
+                </Button>
+            </Link>
+
 
             {/* Submit Button */}
             <Button
