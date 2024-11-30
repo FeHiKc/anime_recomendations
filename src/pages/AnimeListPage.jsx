@@ -65,7 +65,7 @@ const AnimeListPage = () => {
         );
         setAnimeList(updatedList);
         localStorage.setItem('animeList', JSON.stringify(updatedList));
-        client.put(`/anime/${editAnime.id}`, {
+        client.patch(`/anime/${editAnime.id}`, {
             rating: newRating,
             comment: newComment,
             status: newStatus,
