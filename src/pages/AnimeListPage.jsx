@@ -30,7 +30,8 @@ const AnimeListPage = () => {
 
     useEffect(() => {
         client.get('/anime').then(({ data }) => {
-            setAnimeList(data.data);
+            console.log(data)
+            setAnimeList(data);
         });
     }, []);
 
